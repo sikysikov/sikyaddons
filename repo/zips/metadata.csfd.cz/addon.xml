@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.30" provider-name="sikita">
+   <requires>
+      <import addon="xbmc.metadata" version="2.1.0"/>
+   </requires>
+   <extension point="xbmc.metadata.scraper.movies" language="cs" library="csfdcz.xml"/>
+   <extension point="xbmc.addon.metadata">
+      <summary lang="en">ČSFD Movie Scraper</summary>
+      <summary lang="cs">ČSFD Metadata Stahovač</summary>
+      <summary lang="sk">ČSFD Metadata Sťahovač</summary>
+      <description lang="en">Download Movie information only from www.csfd.cz (czech-slovak movie database)</description>
+      <description lang="cs">Stahuje informace o filmech pouze z csfd.cz. Nouzová úprava verze od ekagorit pro nový web ČSFD.</description>
+      <description lang="sk">Stahuje informace o filmech pouze z csfd.cz. Nouzová úprava verze od ekagorit pro nový web ČSFD.</description>
+      <language>cs en sk</language>
+      <platform>all</platform>
+      <license>GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007</license>
+      <forum></forum>
+      <news>
+v 3.30
+   [added] Get country of origin       
+v 3.29
+   [fix] Fixed getting GENRE details      
+v 3.28
+   [fix] Get poster fallback to lo-res picture
+v 3.27
+   [fix] Get movie using URL from .NFO file
+   [fix] Cleanup 
+v 3.26
+   [added] Option to remove unsafe chars from reviews 
+   [added] Extend search in Shows and Series
+   [fix] CSFD search update
+v 3.25 (25.1.2022)      
+   [fix] Remove unsafe chars from CSFD reviews
+   [added] Option to use English title in case of non-latin chars are in secondary
+v 3.24 (17.1.2022)      
+   [fix] Getting credits data
+v 3.23 (23.8.2021)      
+   [added] Fixes which should be added in previous version
+v 3.22 (20.8.2021)
+   [fix] Doubled credits 
+   [fix] Retrieving more fanarts from CSFD
+   [changed] Formatting of user reviews from CSFD
+v 3.21 (29.6.2021)
+   [added] Option: Attach reviews from CSFD to plot
+   [changed] Alternative search mode is enabled by default
+v 3.20b (25.6.2021)
+   [fix] CSFD search when using english filenames
+   [added] Option: Advanced search when filnames are in Czech language
+v 3.20a (24.6.2021)
+   [added] Do not use Working title as a Secondary Title
+   [fix] CSFD search more improved
+v 3.20 (23.6.2021)
+   [added] Download pictures as FanArt from CSFD
+   [fix] CSFD search improved
+v 3.19 (17.6.2021)
+   [fix] CSFD movie posters fetching
+v 3.18 (16.6.2021)
+   [added] Use review as fallback when plot is missing.
+   [fix] CSFD rating
+v 3.17 (7.6.2021)
+   [added] Fetching thumbs of actors from CSFD website.
+v 3.16 (4.6.2021)
+   [changed] new code to work with latest CSFD website. No IMDB/TMDB support.   
+v 3.15 (12.4.2020)
+   [fix] more graceful behavior when missing imdbId (MrVoltz)
+   [fix] proper dependencies
+
+v 3.14 (9.4.2020)
+   [fix] imdb akas subdomain not reachable
+   [fix] different behavior on cleanbuffers - infinite loop crashing Kodi
+   [removed] downloading US rating from imdb took +1s for each request.
+    
+v 3.13 (20.11.2019)
+   [fix] rolled back to http for imdb
+    
+v 3.12 (14.11.2019)
+   [fix] https with user-agent for csfd.cz calls ((JimmyS83)
+
+v 3.11 (9.7.2018)
+   [added] Slovak translation (mvalec)
+
+v 3.10 (20.2.2018)
+   [fix] get imdbid from https links
+v 3.9 (2.2.2018)
+   [changed] prekopana volba a kombinace jazyku v nazvu filmu:
+     local - lokalizovany nazev z csfd (bere v uvahu odkud jde pripojeni)
+     original - prvni z dalsich uvedenych nazvu na csfd
+     en - Snazi se najit prioritne EN nazev z USA,GBR,CAN,AUS,IRL,NZL
+     cz - prvni uvedeny cesky nazev
+     sk - prvni uvedeny slovensky nazev
+   [added] moznost stahovani obsazeni z TMDB
+v 3.8 (26.1.2018)
+   [fixed] vracena stranka primo z vyhledavani
+   [fixed] kolekce, fanart, poster, trailer z TMDB
+   [added] volba preferovaneho jazyka pro fanart (standartne cs)
+   
+v 3.7 (31.12.2017)
+   [fixed] polozky v nastaveni
+   [fixed] spravne stahuje pocet hlasu hodnoceni
+   
+v 3.6 (28.12.2017)
+   [fixed] Smazáno nadbytečné odsazováni v popisu filmu
+   [added] Možnost zapnout anglické názvy místo "původních"
+   
+v 3.5 (23.11.2017)
+   Logika založena na metadata.csfd.cz verzi 3.4h, ale skoro celé přepsáno. Změny:
+   [fixed] Automatické přesměrovaní IMDB ID na správné (např: imdbid pro film Neon Demon)
+   [fixed] Plakát z CSFD stahuje v maximalním rozlišení
+   [fixed] Délka filmu stažena i při uvedení více verzí na CSFD
+   [changed] Actors, Directors, Writers stahuje opět z IMDB
+   [added] Fallback obsahu z TMDB
+   [added] Možnost stahovaní obsahu pouze z TMDB
+   [added] Scraper opět najde výsledek hledaní s jedním výsledkem (např: Metegol)
+   [added] Volba stahovaní plakátu z IMDB 
+   [added] Ve výsledku hledání zobrazuje i search-name
+   [added] Používání cache
+      </news>
+      <assets>
+         <icon>icon.png</icon>
+         <fanart>fanart.jpg</fanart>
+         <screenshot></screenshot>
+      </assets>
+   </extension>
+</addon>

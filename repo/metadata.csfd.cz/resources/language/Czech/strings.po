@@ -1,0 +1,109 @@
+# Kodi Media Center language file
+# Addon Name: ČSFD.cz
+# Addon id: metadata.csfd.cz
+# Addon Provider: ekarorgit
+msgid ""
+msgstr ""
+"Project-Id-Version: metadata.csfd.cz\n"
+"Report-Msgid-Bugs-To: https://github.com/ekarorgit/metadata.csfd.cz\n"
+"POT-Creation-Date: 2018-02-02 01:27+0000\n"
+"PO-Revision-Date: 2021-03-09 22:00+0000\n"
+"Last-Translator: ekarorgit\n"
+"Language-Team: Czech (Czech Republic)\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+msgctxt "Addon Summary"
+msgid "ČSFD Movie Scraper"
+msgstr "ČSFD Metadata Stahovač"
+
+msgctxt "Addon Description"
+msgid "Download Movie information only from www.csfd.cz (czech-slovak movie database)"
+msgstr "Stahuje informace o filmech pouze z csfd.cz. Nouzová úprava verze od ekagorit pro nový web ČSFD."
+
+msgctxt "Addon Disclaimer"
+msgid "For bugs visit www.github.com/ekarorgit/metadata.csfd.cz"
+msgstr "Pro nahlášení bugu navštivte www.github.com/ekarorgit/metadata.csfd.cz"
+
+msgctxt "#30001"
+msgid "Force year from filename in search"
+msgstr "Zohlednit rok z názvu při vyhledávání"
+
+msgctxt "#30002"
+msgid "Remove "part X" from title"
+msgstr "Odstraňovat výrazy "part" z názvu filmu"
+
+msgctxt "#30003"
+msgid "Force exact name of file/folder in search"
+msgstr "Vynutit celý název (souboru/adresáře) ve vyhledávání (např. SOSÁČ)"
+
+msgctxt "#30004"
+msgid "Force 1st word only in search"
+msgstr "Vynutit pouze první slovo z názvu ve vyhledávání"
+
+msgctxt "#30100"
+msgid "Medias"
+msgstr "Filmová média & data"
+
+msgctxt "#30101"
+msgid "Download CSFD poster"
+msgstr "Stahovat plakát z ČSFD"
+
+msgctxt "#30200"
+msgid "Film title"
+msgstr "Název filmu"
+
+msgctxt "#30201"
+msgid "Preffered title language (fallback:local)"
+msgstr "Preferovaný jazyk názvu filmu (fallback:local)"
+
+msgctxt "#30202"
+msgid "Show secondary title"
+msgstr "Zobrazit druhý název filmu v závorce"
+
+msgctxt "#30203"
+msgid "Preffered secondary title language (fallback:original)"
+msgstr "Preferovaný jazyk druhého názvu (fallback:original)"
+
+msgctxt "#30204"
+msgid "Swap primary and secondary titles"
+msgstr "Prohodit první a druhý název"
+
+msgctxt "#30205"
+msgid "Hide secondary title if same as primary"
+msgstr "Skrýt druhý název pokud jsou názvy shodné"
+
+msgctxt "#30206"
+msgid "Use English title in case of non-latin chars in secondary"
+msgstr "Použít anglický název, není-li druhý název latinkou"
+
+msgctxt "#30210"
+msgid "Download pictures as FanArt from CSFD"
+msgstr "Stahovat obrázky jako FanArt z ČSFD"
+
+msgctxt "#30211"
+msgid "CSFD picture size (width)"
+msgstr "Velikost obrázku (šířka v pixelech)"
+
+msgctxt "#30220"
+msgid "Attach reviews from CSFD to plot"
+msgstr "Přidat recenze z ČSFD k popisu filmu"
+
+msgctxt "#30230"
+msgid "Remove non-standard chars from reviews"
+msgstr "Odstranit nestandardní znaky z recenzí"
+
+msgctxt "#30300"
+msgid "Advanced Search"
+msgstr "Rozšířené vyhledávání"
+
+msgctxt "#30301"
+msgid "Alternative search mode (SOSAC)"
+msgstr "Alternativní technika vyhledávání (SOSÁČ mód)"
+
+msgctxt "#30302"
+msgid "Extend search in Shows and Series"
+msgstr "Rozšířit vyhledávání i na pořady a seriály"

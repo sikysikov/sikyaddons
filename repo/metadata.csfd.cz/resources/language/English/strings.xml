@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+    <!-- settings labels -->
+    <string id="30001">Force year from filename in search</string>
+    <string id="30002">Remove "part X" from title</string>
+    <string id="30003">Force exact name of file/folder in search</string>
+    <string id="30004">Force 1st word only in search</string>
+    <string id="30100">Medias &amp; Infos</string>
+    <string id="30101">Download CSFD poster</string>
+    <string id="30200">Film title</string>
+    <string id="30201">Preffered title language (fallback:local)</string>
+    <string id="30202">Show secondary title</string>
+    <string id="30203">Preffered secondary title language (fallback:original)</string>
+    <string id="30204">Swap primary and secondary titles</string>
+    <string id="30205">Hide secondary title if same as primary</string>
+    <string id="30206">Use English title in case of non-latin chars in secondary</string>
+    <string id="30210">Download pictures as FanArt from CSFD</string>
+    <string id="30211">CSFD picture size (width)</string>
+    <string id="30220">Attach reviews from CSFD to plot</string>
+    <string id="30230">Remove non-standard chars from reviews</string>
+    <string id="30300">Advanced Search</string>
+    <string id="30301">Alternative search mode (SOSAC mode)</string>
+    <string id="30302">Extend search in Shows and Series</string>
+</strings>
+

@@ -1,0 +1,97 @@
+# Kodi Media Center language file
+# Addon Name: ČSFD.cz
+# Addon id: metadata.csfd.cz
+# Addon Provider: ekarorgit
+msgid ""
+msgstr ""
+"Project-Id-Version: metadata.csfd.cz\n"
+"Report-Msgid-Bugs-To: https://github.com/ekarorgit/metadata.csfd.cz\n"
+"POT-Creation-Date: 2018-02-02 01:27+0000\n"
+"PO-Revision-Date: 2021-03-09 22:00+0000\n"
+"Last-Translator: ekarorgit\n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+msgctxt "#30001"
+msgid "Force year from filename in search"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Remove "part X" from title"
+msgstr ""
+
+msgctxt "#30003"
+msgid "Force exact name of file/folder in search"
+msgstr ""
+
+msgctxt "#30004"
+msgid "Force 1st word only in search"
+msgstr ""
+
+msgctxt "#30100"
+msgid "Medias & Infos"
+msgstr ""
+
+msgctxt "#30101"
+msgid "Download CSFD poster"
+msgstr ""
+
+msgctxt "#30200"
+msgid "Film title"
+msgstr ""
+
+msgctxt "#30201"
+msgid "Preffered title language (fallback:local)"
+msgstr ""
+
+msgctxt "#30202"
+msgid "Show secondary title"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Preffered secondary title language (fallback:original)"
+msgstr ""
+
+msgctxt "#30204"
+msgid "Swap primary and secondary titles"
+msgstr ""
+
+msgctxt "#30205"
+msgid "Hide secondary title if same as primary"
+msgstr ""
+
+msgctxt "#30206"
+msgid "Use English title in case of non-latin chars in secondary"
+msgstr ""
+
+msgctxt "#30210"
+msgid "Download pictures as FanArt from CSFD"
+msgstr ""
+
+msgctxt "#30211"
+msgid "CSFD picture size (width)"
+msgstr ""
+
+msgctxt "#30220"
+msgid "Attach reviews from CSFD to plot"
+msgstr ""
+
+msgctxt "#30230"
+msgid "Remove non-standard chars from reviews"
+msgstr ""
+
+msgctxt "#30300"
+msgid "Advanced Search"
+msgstr ""
+
+msgctxt "#30301"
+msgid "Alternative search mode (SOSAC)"
+msgstr ""
+
+msgctxt "#30302"
+msgid "Extend search in Shows and Series"
+msgstr ""

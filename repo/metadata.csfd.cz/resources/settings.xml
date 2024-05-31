@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <category label="30200">
+        <setting label="30201" type="select" id="titleprimaryl" default="local" values="local|original|en|cs|sk"/>
+        <setting label="30202" type="bool" id="titlesecondary" default="true"/>
+        <setting label="30203" type="select" id="titlesecondaryl" default="original" values="original|en" enable="eq(-1,true)"/>
+        <setting label="30204" type="bool" id="titleswap" default="false" enable="eq(-2,true)"/>
+        <setting label="30205" type="bool" id="titlesame" default="false" enable="eq(-3,true)"/>
+        <setting label="30206" type="bool" id="latinonlyoriginal" default="false" enable="eq(-4,true)"/>
+    </category>
+    <category label="30100">
+        <setting label="30101" type="bool" id="csfdposter" default="true"/>
+        <setting label="30210" type="bool" id="csfdart" default="true"/>
+        <setting label="30211" type="select" id="csfdartres" default="1080" values="720|1080|1326|1526|1989|2289" enable="eq(-1,true)"/>
+        <setting label="30220" type="bool" id="csfdreviews" default="true"/>
+        <setting label="30230" type="bool" id="reviewfix" default="false" enable="eq(-1,true)"/>
+    </category>
+    <category label="30300">
+        <setting label="30301" type="bool" id="czfilenames" default="true"/>
+        <setting label="30002" type="bool" id="titlepartsremove" default="false"/>
+        <setting label="30302" type="bool" id="csfdsearchext" default="true"/>  
+    </category>
+</settings>
