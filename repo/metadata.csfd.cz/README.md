@@ -6,11 +6,12 @@ This is a metadata add-on for [Kodi/XBMC](http://kodi.tv/) which scrapes movie i
 Background
 ==========
 
-Fork of ekarorgit scrapper https://github.com/ekarorgit/metadata.csfd.cz/
+Fork of ekarorgit scrapper add-on https://github.com/ekarorgit/metadata.csfd.cz/
 
 Installation
 ============
 
+Kodi File Manager Source: https://sikysikov.github.io/sikyaddons/
 
 Compatibility
 =============
