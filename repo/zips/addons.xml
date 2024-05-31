@@ -121,8 +121,8 @@ v 3.5 (23.11.2017)
          <screenshot />
       </assets>
    </extension>
-</addon><addon id="repository.sikyaddons" name="siky's Kodi Addon Repository" version="0.1" provider-name="sikysikov">
-    <extension point="xbmc.addon.repository" name="siky's Kodi Addon Repository">
+</addon><addon id="repository.sikyaddons" name="siky's repo" version="0.2" provider-name="sikysikov">
+    <extension point="xbmc.addon.repository" name="siky's repo">
         <dir>
             <info compressed="false">https://raw.githubusercontent.com/sikysikov/sikyaddons/master/repo/zips/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/sikysikov/sikyaddons/master/repo/zips/addons.xml.md5</checksum>
