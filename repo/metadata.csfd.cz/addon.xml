@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.30" provider-name="sikita">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.31" provider-name="sikita">
    <requires>
       <import addon="xbmc.metadata" version="2.1.0"/>
    </requires>
    <extension point="xbmc.metadata.scraper.movies" language="cs" library="csfdcz.xml"/>
    <extension point="xbmc.addon.metadata">
       <summary lang="en">ČSFD Movie Scraper</summary>
-      <summary lang="cs">ČSFD Metadata Stahovač</summary>
-      <summary lang="sk">ČSFD Metadata Sťahovač</summary>
+      <summary lang="cs">Poskytovatel informací z ČSFD.cz</summary>
+      <summary lang="sk">Poskytovatel informací z ČSFD.cz</summary>
       <description lang="en">Download Movie information only from www.csfd.cz (czech-slovak movie database)</description>
       <description lang="cs">Stahuje informace o filmech pouze z csfd.cz. Nouzová úprava verze od ekagorit pro nový web ČSFD.</description>
       <description lang="sk">Stahuje informace o filmech pouze z csfd.cz. Nouzová úprava verze od ekagorit pro nový web ČSFD.</description>
@@ -16,6 +16,8 @@
       <license>GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007</license>
       <forum></forum>
       <news>
+v 3.31
+   [added] Option to include year in search query     
 v 3.30
    [added] Get country of origin       
 v 3.29

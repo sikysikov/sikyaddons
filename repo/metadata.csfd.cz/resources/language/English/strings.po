@@ -1,14 +1,14 @@
 # Kodi Media Center language file
 # Addon Name: ČSFD.cz
 # Addon id: metadata.csfd.cz
-# Addon Provider: ekarorgit
+# Addon Provider: sikita
 msgid ""
 msgstr ""
 "Project-Id-Version: metadata.csfd.cz\n"
-"Report-Msgid-Bugs-To: https://github.com/ekarorgit/metadata.csfd.cz\n"
+"Report-Msgid-Bugs-To: https://github.com/sikysikov/sikyaddons/\n"
 "POT-Creation-Date: 2018-02-02 01:27+0000\n"
-"PO-Revision-Date: 2021-03-09 22:00+0000\n"
-"Last-Translator: ekarorgit\n"
+"PO-Revision-Date: 2025-05-12 22:00+0000\n"
+"Last-Translator: sikita\n"
 "Language-Team: English\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -89,9 +89,13 @@ msgid "Advanced Search"
 msgstr ""
 
 msgctxt "#30301"
-msgid "Alternative search mode (SOSAC)"
+msgid "Czech translation used in filenames"
 msgstr ""
 
 msgctxt "#30302"
 msgid "Extend search in Shows and Series"
+msgstr ""
+
+msgctxt "#30303"
+msgid "Include year in query"
 msgstr ""

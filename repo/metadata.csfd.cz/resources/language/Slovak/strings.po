@@ -1,14 +1,14 @@
 # Kodi Media Center language file
 # Addon Name: ČSFD.cz
 # Addon id: metadata.csfd.cz
-# Addon Provider: ekarorgit
+# Addon Provider: sikita
 msgid ""
 msgstr ""
 "Project-Id-Version: metadata.csfd.cz\n"
-"Report-Msgid-Bugs-To: https://github.com/ekarorgit/metadata.csfd.cz\n"
+"Report-Msgid-Bugs-To: https://github.com/sikysikov/sikyaddons/\n"
 "POT-Creation-Date: 2018-02-02 01:27+0000\n"
-"PO-Revision-Date: 2021-03-09 22:00+0000\n"
-"Last-Translator: ekarorgit\n"
+"PO-Revision-Date: 2025-05-12 22:00+0000\n"
+"Last-Translator: sikita\n"
 "Language-Team: Czech (Czech Republic)\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
@@ -18,15 +18,15 @@ msgstr ""
 
 msgctxt "Addon Summary"
 msgid "ČSFD Movie Scraper"
-msgstr "ČSFD Metadata Stahovač"
+msgstr "Poskytovatel informací z ČSFD.cz"
 
 msgctxt "Addon Description"
 msgid "Download Movie information only from www.csfd.cz (czech-slovak movie database)"
 msgstr "Stahuje informace o filmech pouze z csfd.cz. Nouzová úprava verze od ekagorit pro nový web ČSFD."
 
 msgctxt "Addon Disclaimer"
-msgid "For bugs visit www.github.com/ekarorgit/metadata.csfd.cz"
-msgstr "Pro nahlášení bugu navštivte www.github.com/ekarorgit/metadata.csfd.cz"
+msgid "For bugs visit https://github.com/sikysikov/sikyaddons/"
+msgstr "Pro nahlášení bugu navštivte https://github.com/sikysikov/sikyaddons/"
 
 msgctxt "#30001"
 msgid "Force year from filename in search"
@@ -101,9 +101,13 @@ msgid "Advanced Search"
 msgstr "Rozšířené vyhledávání"
 
 msgctxt "#30301"
-msgid "Alternative search mode (SOSAC)"
-msgstr "Alternativní technika vyhledávání (SOSÁČ mód)"
+msgid "Czech translation used in filenames"
+msgstr "V názvech souborů jsou přeložené názvy filmů"
 
 msgctxt "#30302"
 msgid "Extend search in Shows & Series"
-msgstr "Rozšířit vyhledávání i na pořady a seriály"
+msgstr "Rozšířit vyhledávání i na další pořady a seriály"
+
+msgctxt "#30303"
+msgid "Include year in query"
+msgstr "Přidat rok k názvu filmu při vyhledávání"

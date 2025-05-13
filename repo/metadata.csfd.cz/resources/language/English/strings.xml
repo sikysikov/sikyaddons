@@ -19,7 +19,8 @@
     <string id="30220">Attach reviews from CSFD to plot</string>
     <string id="30230">Remove non-standard chars from reviews</string>
     <string id="30300">Advanced Search</string>
-    <string id="30301">Alternative search mode (SOSAC mode)</string>
+    <string id="30301">Czech translation used in filenames</string>
     <string id="30302">Extend search in Shows and Series</string>
+    <string id="30303">Include year in query</string>
 </strings>
 

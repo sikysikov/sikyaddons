@@ -31,6 +31,7 @@
     <string id="30220">Přidat recenze z ČSFD k popisu filmu</string>
     <string id="30230">Odstranit nestandardní znaky z recenzí</string>
     <string id="30300">Rozšířené vyhledávání</string>
-    <string id="30301">Alternativní technika vyhledávání (SOSÁČ mód)</string>
-    <string id="30302">Rozšířit vyhledávání i na pořady a seriály</string>
+    <string id="30301">V názvech souborů jsou české překlady filmových názvů</string>
+    <string id="30302">Rozšířit vyhledávání i na další pořady a seriály</string>
+    <string id="30303">Přidat rok k názvu filmu při vyhledávání</string>
 </strings>

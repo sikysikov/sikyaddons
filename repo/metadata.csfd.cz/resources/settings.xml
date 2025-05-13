@@ -16,8 +16,9 @@
         <setting label="30230" type="bool" id="reviewfix" default="false" enable="eq(-1,true)"/>
     </category>
     <category label="30300">
-        <setting label="30301" type="bool" id="czfilenames" default="true"/>
+        <setting label="30301" type="bool" id="czfilenames" default="false"/>
         <setting label="30002" type="bool" id="titlepartsremove" default="false"/>
-        <setting label="30302" type="bool" id="csfdsearchext" default="true"/>  
+        <setting label="30302" type="bool" id="csfdsearchext" default="true"/>
+        <setting label="30303" type="bool" id="queryyear" default="false"/>  
     </category>
 </settings>

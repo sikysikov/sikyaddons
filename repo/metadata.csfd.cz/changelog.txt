@@ -1,3 +1,6 @@
+[B]3.31[/B]
+[added] Option to include year in search query
+
 [B]3.30[/B]
 [added] Get country of origin 
 
