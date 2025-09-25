@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2025-05-12" framework="1.1">
+<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2025-09-25" framework="1.1">
 
 	<!-- input : $$1=nfo file -->
 	<!-- output: <url>*</url> -->
@@ -265,7 +265,7 @@
             </RegExp>
             <RegExp output="" dest="5"><expression clear="yes"></expression></RegExp>
             <RegExp conditional="csfdreviews" input="$$1" output="@[B]\1[/B][CR][I]\2[/I][CR][CR]" dest="5+">
-                <expression trim="1" repeat="yes">class=&quot;user-title-name&quot;&gt;(.*?)&lt;\/a&gt;[\s\S]*?recenze\/\?comment(?:[\s\S]*?)&lt;\/div&gt;[^p]([\s\S]*?)&lt;span class=&quot;comment-date</expression>
+                <expression trim="1" repeat="yes">class=&quot;user-title-name&quot;&gt;(.*?)&lt;\/a&gt;[\s\S]*?review-content&gt;([\s\S]*?)&lt;span class=&quot;review-date</expression>
             </RegExp>
             <RegExp conditional="reviewfix" input="$$5" output="\1" dest="6+">
                 <expression repeat="yes">([\sA-Za-zÀ-ȕ0-9(),-_’&#39;“„&lt;&gt;{}&quot;/|;:.~!?@#$%^=&amp;*\]\\\(\)\[¿§«»ω¤°€¥£¢¡®©_+║´]+)</expression>

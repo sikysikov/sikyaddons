@@ -1,3 +1,6 @@
+[B]3.32[/B]
+[fixed] Reviews not loading due to changes in code of CSFD
+
 [B]3.31[/B]
 [added] Option to include year in search query
 
