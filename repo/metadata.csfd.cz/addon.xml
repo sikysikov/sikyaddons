@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.32" provider-name="sikita">
+<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.33" provider-name="sikita">
    <requires>
       <import addon="xbmc.metadata" version="2.1.0"/>
    </requires>
@@ -16,8 +16,10 @@
       <license>GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007</license>
       <forum></forum>
       <news>
+v 3.33
+   [fix] CSFD changes
 v 3.32
-   [fixed] Reviews not loading due to changes in code of CSFD
+   [fix] Reviews not loading due to changes in code of CSFD
 v 3.31
    [added] Option to include year in search query     
 v 3.30
