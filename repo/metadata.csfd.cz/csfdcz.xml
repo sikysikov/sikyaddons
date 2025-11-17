@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2025-11-16" framework="1.1">
+<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2025-11-17" framework="1.1">
 
 	<!-- input : $$1=nfo file -->
 	<!-- output: <url>*</url> -->
@@ -57,28 +57,28 @@
                 </RegExp>
                 <!-- hlavni nabidka -->
                 <!-- force name & year --> 
-                <RegExp conditional="czfilenames" input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
-                    <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/(?i)(\d+-?$$9)[^\/]*?\/[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*?\(($$3)\)&lt;\/span&gt;(.*?)&lt;\/h3&gt;</expression>
+                <RegExp conditional="czfilenames" input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \5\4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
+                    <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/(?i)(\d+-?$$9)[^\/]*?\/[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*?\(($$3)\)&lt;\/span&gt;([^\r\n]*?)&lt;\/h3&gt;([\S\s]*?)&lt;\/header&gt;</expression>
                 </RegExp>
                 <!-- force search name & year -->
-                 <RegExp input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
-                    <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/([0-9]*)[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*\(($$3)\)&lt;\/span&gt;([^:]*?&lt;p class=&quot;search-name&quot;&gt;(?i)\($$5.*?)&lt;\/p&gt;</expression>
+                 <RegExp input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \5\4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
+                    <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/([0-9]*)[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*?\(($$3)\)&lt;\/span&gt;[^\r\n]*?&lt;\/h3&gt;[^&lt;]*?&lt;p class=&quot;search-name&quot;&gt;((?i)\($$5.*?)&lt;\/p&gt;</expression>
                 </RegExp>
                 <!-- force first word & year -->
                 <!-- <RegExp conditional="czfilenames" input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
                      <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/(?i)(\d+-$$4[^\/]*)\/&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*\(($$3)\)&lt;\/span&gt;(.*?)&lt;\/h3&gt;</expression>
                 </RegExp> -->
                 <!-- force first word of search name & year -->
-                <RegExp input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
-                    <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/([0-9]*)[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*\(($$3)\)&lt;\/span&gt;([^:]*?&lt;p class=&quot;search-name&quot;&gt;(?i)\($$4.*?)&lt;\/p&gt;</expression>
+                <RegExp input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \5\4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
+                    <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/([0-9]*)[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*?\(($$3)\)&lt;\/span&gt;[^\r\n]*?&lt;\/h3&gt;[^&lt;]*?&lt;p class=&quot;search-name&quot;&gt;((?i)\($$4.*?)&lt;\/p&gt;</expression>
                 </RegExp>
-                 <!-- force year only -->                  
-                <RegExp input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
-                    <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/([0-9]*)[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*\(($$3)\)&lt;\/span&gt;(.*?)&lt;\/h3&gt;</expression>
-                </RegExp>       
+                <!-- force year only -->                  
+                <RegExp input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \5\4&lt;/t1&gt;&lt;t2&gt; (\3)&lt;/t2&gt;" dest="6+">
+                    <expression repeat="no" noclean="1,2">&lt;a href=&quot;\/film\/([0-9]*)[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;([^&lt;]*)[^\(]*\(($$3)\)&lt;\/span&gt;([^\r\n]*?)&lt;\/h3&gt;([\S\s]*?)&lt;\/header&gt;</expression>
+                </RegExp>     
                 <!-- get the rest of the list -->
-                <RegExp input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \4&lt;/t1&gt;&lt;t2&gt; \3&lt;/t2&gt;" dest="6+">
-                    <expression repeat="yes" noclean="1,2">&lt;a href=&quot;\/film\/([0-9]*)[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;(.*?)&lt;\/a&gt; &lt;span class=&quot;film-title-info&quot;&gt;&lt;span class=&quot;info&quot;&gt;(.*?)&lt;\/span&gt;(.*?)&lt;\/h3&gt;</expression>
+                <RegExp input="$$1" output="&lt;u&gt;\1&lt;/u&gt;&lt;t&gt;\2&lt;/t&gt;&lt;t1&gt; \5\4&lt;/t1&gt;&lt;t2&gt; \3&lt;/t2&gt;" dest="6+">
+                    <expression repeat="yes" noclean="1,2">&lt;a href=&quot;\/film\/([0-9]*)[^&quot;]*?&quot; class=&quot;film-title-name&quot;&gt;(.*?)&lt;\/a&gt; &lt;span class=&quot;film-title-info&quot;&gt;&lt;span class=&quot;info&quot;&gt;(.*?)&lt;\/span&gt;([^\r\n]*?)&lt;\/h3&gt;([\S\s]*?)&lt;\/header&gt;</expression>
                 </RegExp>
                 <expression repeat="yes" noclean="1,2,3">&lt;u&gt;(.*?)&lt;/u&gt;&lt;t&gt;(.*?)&lt;/t&gt;(?:&lt;t1&gt;(.*?)&lt;/t1&gt;)?(?:&lt;t2&gt;(.*?)&lt;/t2&gt;)?</expression>
             </RegExp>

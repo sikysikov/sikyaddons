@@ -1,3 +1,7 @@
+[B]3.34[/B]
+[fix] Further fixes of new CSFD changes
+[added] Show more information in search result list
+
 [B]3.33[/B]
 [fix] CSFD changes
 
