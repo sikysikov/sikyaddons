@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.34" provider-name="sikita">
+<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.35" provider-name="sikita">
    <requires>
       <import addon="xbmc.metadata" version="2.1.0"/>
    </requires>
@@ -16,6 +16,8 @@
       <license>GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007</license>
       <forum></forum>
       <news>
+v 3.35
+   [fix] Get rating after CSFD changes
 v 3.34
    [fix] Further fixes of new CSFD changes
    [added] Show more information in search result list

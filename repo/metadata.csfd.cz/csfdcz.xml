@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2025-11-17" framework="1.1">
+<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2025-12-03" framework="1.1">
 
 	<!-- input : $$1=nfo file -->
 	<!-- output: <url>*</url> -->
@@ -282,7 +282,7 @@
             </RegExp>
             <!-- rating -->
             <RegExp input="$$1" output="&lt;rating max=&quot;100&quot;&gt;\1&lt;/rating&gt;" dest="7+">
-                <expression repeat="no" trim="1" noclean="1">rating-average[^0-9]*?([0-9]+)%</expression>
+                <expression repeat="no" trim="1" noclean="1">rating-average[\s\S]*?(\d+)%</expression>
             </RegExp>
             <!-- votes -->
             <RegExp input="$$1" output="&lt;votes&gt;\1&lt;/votes&gt;" dest="7+">
