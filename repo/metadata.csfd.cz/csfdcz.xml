@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2025-12-03" framework="1.1">
+<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2026-01-12" framework="1.1">
 
 	<!-- input : $$1=nfo file -->
 	<!-- output: <url>*</url> -->
@@ -341,11 +341,11 @@
             <RegExp conditional="csfdposter" input="$$1" output="\1" dest="6">
                 <expression repeat="no" noclean="1" clear="yes">class=&quot;film-posters([\s\S]*?)&lt;\/div</expression>
             </RegExp>
-            <RegExp conditional="csfdposter" input="$$6" output="&lt;thumb&gt;https://\1|$$10&lt;/thumb&gt;" dest="7+">
+            <RegExp conditional="csfdposter" input="$$6" output="&lt;thumb&gt;https://\1&lt;/thumb&gt;" dest="7+">
                 <expression repeat="no" noclean="1">srcset=&quot;.*(image.pmgstatic.com\/.*?\..*?g)</expression>
             </RegExp>
             <!-- fallback lo-res poster -->
-            <RegExp conditional="csfdposter" input="$$6" output="&lt;thumb&gt;https://\1|$$10&lt;/thumb&gt;" dest="7+">
+            <RegExp conditional="csfdposter" input="$$6" output="&lt;thumb&gt;https://\1&lt;/thumb&gt;" dest="7+">
                 <expression repeat="no" noclean="1">(image.pmgstatic.com\/.*?\..*?g)</expression>
             </RegExp>
             <!-- actors -->     
@@ -364,7 +364,7 @@
                 <RegExp input="$$1" output="\1" dest="6">
                     <expression repeat="no" noclean="1">&lt;div class=&quot;box-content&quot;&gt;\s*?&lt;article([\s\S]*?)&lt;aside</expression> 
                 </RegExp>
-                <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;thumb&gt;https://\1|$$10&lt;/thumb&gt;&lt;/actor&gt;" dest="7+">    
+                <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;thumb&gt;https://\1&lt;/thumb&gt;&lt;/actor&gt;" dest="7+">    
                     <expression repeat="yes" noclean="1">(image.pmgstatic.com/cache/resized/.*?)&quot;[\s\S]*?class=&quot;film-title-name&quot;[^&gt;]*?&gt;(.*?)&lt;/a</expression>
                 </RegExp>    
             <expression noclean="1" />
@@ -381,11 +381,11 @@
                     <expression repeat="no" noclean="1">tab-content-gallery([\s\S]*?)&lt;aside</expression> 
                 </RegExp>
                 <!-- selected resolution -->
-                <RegExp conditional="csfdart" input="$$6" output="&lt;thumb&gt;https://\1|$$10&lt;/thumb&gt;" dest="9+">    
+                <RegExp conditional="csfdart" input="$$6" output="&lt;thumb&gt;https://\1&lt;/thumb&gt;" dest="9+">    
                     <expression repeat="yes" noclean="1">(image.pmgstatic.com\/cache\/resized\/w$$11[^.]*\.jpg)</expression>
                 </RegExp> 
                 <!-- fallback basic resolution -->
-                <RegExp conditional="csfdart" input="$$6" output="&lt;thumb&gt;https://\1|$$10&lt;/thumb&gt;" dest="9+">    
+                <RegExp conditional="csfdart" input="$$6" output="&lt;thumb&gt;https://\1&lt;/thumb&gt;" dest="9+">    
                     <expression repeat="yes" noclean="1">&lt;img src=&quot;\/\/(image.pmgstatic.com[^.]*\.jpg)</expression>
                 </RegExp>
                 <RegExp conditional="csfdart" input="$$9" output="&lt;fanart&gt;\1&lt;/fanart&gt;" dest="7">    

@@ -1,3 +1,6 @@
+[B]3.36[/B]
+[changed] Use regular image links without user-agent addition
+
 [B]3.35[/B]
 [fix] Get rating after CSFD changes
 
