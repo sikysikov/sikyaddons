@@ -350,10 +350,10 @@
             <expression repeat="no" noclean="1">(image.pmgstatic.com\/.*?\..*?g)</expression>
         </RegExp>
 
-        <RegExp conditional="tmdbextradata" input="$$1" output="&lt;url function=&quot;ParseHelperData&quot;&gt;http://127.0.0.1:32541/?csfd_id=\1&lt;/url&gt;" dest="5+">
+        <RegExp conditional="tmdbextradata" input="$$1" output="&lt;url function=&quot;ParseHelperData&quot;&gt;http://127.0.0.1:32541/?csfd_id=\1&lt;/url&gt;" dest="5">
             <expression repeat="no" noclean="1" trim="1">href=&quot;https://www.csfd.cz/film/(.*?)/</expression> 
         </RegExp>
-        <RegExp conditional="!tmdbextradata" input="$$1" output="&lt;url function=&quot;GetCSFDActors&quot; gzip=&quot;yes&quot; cache=&quot;CSFD.hraji-\1.html&quot;&gt;https://www.csfd.cz/film/\1/hraji/|$$10&lt;/url&gt;" dest="5+">
+        <RegExp conditional="!tmdbextradata" input="$$1" output="&lt;url function=&quot;GetCSFDActors&quot; gzip=&quot;yes&quot; cache=&quot;CSFD.hraji-\1.html&quot;&gt;https://www.csfd.cz/film/\1/hraji/|$$10&lt;/url&gt;" dest="5">
             <expression repeat="no" noclean="1" trim="1">href=&quot;https://www.csfd.cz/film/(.*?)/</expression> 
         </RegExp>     
         <RegExp conditional="csfdart" input="$$1" output="&lt;url function=&quot;GetCSFDFanarts&quot; gzip=&quot;yes&quot; cache=&quot;CSFD.galerie-\1.html&quot;&gt;https://www.csfd.cz/film/\1/galerie/|$$10&lt;/url&gt;" dest="5+">
