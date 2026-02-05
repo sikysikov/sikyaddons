@@ -134,6 +134,20 @@ v 3.5 (23.11.2017)
          <screenshot />
       </assets>
    </extension>
+</addon><addon id="metadata.csfdcz.helper" name="TMDB Helper for CSFD" version="0.0.1" provider-name="sikita">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+    </requires>
+    <extension point="xbmc.service" library="main.py" start="login" />
+    <extension point="xbmc.python.module" library="main.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="cs">TMDB služba pro ČSFD scraper</summary>
+        <description lang="cs">Služba pro parsování dat z TMDB API a jejich převod do formátu čitelného pro Kodi.</description>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+    </extension>
 </addon><addon id="repository.sikyaddons" name="siky's repo" version="0.2" provider-name="sikysikov">
     <extension point="xbmc.addon.repository" name="siky's repo">
         <dir>
