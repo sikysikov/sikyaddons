@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2026-01-12" framework="1.1">
+<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2026-02-05" framework="1.1">
 
 	<!-- input : $$1=nfo file -->
 	<!-- output: <url>*</url> -->
@@ -90,287 +90,302 @@
 	<!-- output : $$10=user-agent -->
     <GetDetails clearbuffers="no" dest="8">
         <RegExp output="user-agent=Mozilla%2F5.0%20%28Windows%20NT%206.1%3B%20Win64%3B%20x64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F78.0.3904.97%20Safari%2F537.36" dest="10"><expression/></RegExp>
-        <RegExp input="$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="8">
-            <!-- Titles -->
-            <RegExp output="" dest="11"><expression clear="yes"></expression></RegExp>
-            <RegExp output="" dest="7"><expression clear="yes"></expression></RegExp>
-            <!-- local title $$11 -->
-            <RegExp input="$$1" output="\1" dest="11+">
-                <expression noclean="1" trim="1">&lt;h1[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- Isolate more titles -->
-            <RegExp input="$$1" output="\1" dest="6">
-                <expression noclean="1" trim="1">&lt;ul class=&quot;film-names&quot;&gt;([\s\S]*?)&lt;/ul&gt;</expression>
-            </RegExp>
-            <!-- original title $$12 -->
-            <RegExp input="$$6" output="\1" dest="12">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;(?!Česko)[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- allow latin only in original title -->
-            <RegExp conditional="latinonlyoriginal" input="$$12" output="\1" dest="12">
-                <RegExp output="$$12" dest="19">
-                    <expression />
-                </RegExp>
-                <RegExp input="$$19" output="\1" dest="12">
-                    <expression clear="yes">^([\sA-Za-zÀ-ȕ0-9()-_’&#39;“„&lt;&gt;{}&quot;/|;:.,~!?@#$%^=&amp;*\]\\\(\)\[¿§«»ω¤°€¥£¢¡®©_+║´]+)</expression>
-                </RegExp>
-                <expression clear="yes">^($$19)$</expression>
-            </RegExp>
-            <!-- EN title $$13 without fallback (can be empty)-->
-            <!-- EN -->
-            <RegExp input="$$6" output="\1" dest="13">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;angličtina&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- New Zealand -->
-            <RegExp input="$$6" output="\1" dest="13">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Nový Zéland&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- Ireland -->
-            <RegExp input="$$6" output="\1" dest="13">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Irsko&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- Australia -->
-            <RegExp input="$$6" output="\1" dest="13">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Austrálie&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- Canada -->
-            <RegExp input="$$6" output="\1" dest="13">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Kanada&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- GB -->
-            <RegExp input="$$6" output="\1" dest="13">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Velká Británie&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- USA -->
-            <RegExp input="$$6" output="\1" dest="13">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;USA&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
-            </RegExp>
-            <!-- Remove working title -->
-            <RegExp input="$$6" output="\1" dest="14">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; [^&gt;]*&gt;([^&lt;]*)[^&gt;]*&gt;\(pracovn</expression>
-            </RegExp>
-            <!-- Remove festival title -->
-            <RegExp input="$$6" output="\1" dest="14">
-                <expression noclean="1" trim="1">class=&quot;flag&quot; [^&gt;]*&gt;([^&lt;]*)[^&gt;]*&gt;\(festivalový</expression>
-            </RegExp>
-            <RegExp input="$$12" output="" dest="12">
-                <expression noclean="1">^$$14$</expression>
-            </RegExp>
-            <RegExp input="$$13" output="" dest="13">
-                <expression noclean="1">^$$14$</expression>
-            </RegExp>
-            <!-- CZ title $$14 with local fallback -->
-            <RegExp output="$$11" dest="14">
+        
+        <!-- Titles -->
+        <RegExp output="" dest="11"><expression clear="yes"></expression></RegExp>
+        <RegExp output="" dest="7"><expression clear="yes"></expression></RegExp>
+        <RegExp output="" dest="5"><expression clear="yes"></expression></RegExp>
+        <!-- local title $$11 -->
+        <RegExp input="$$1" output="\1" dest="11+">
+            <expression noclean="1" trim="1">&lt;h1[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- Isolate more titles -->
+        <RegExp input="$$1" output="\1" dest="6">
+            <expression noclean="1" trim="1">&lt;ul class=&quot;film-names&quot;&gt;([\s\S]*?)&lt;/ul&gt;</expression>
+        </RegExp>
+        <!-- original title $$12 -->
+        <RegExp input="$$6" output="\1" dest="12">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;(?!Česko)[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- allow latin only in original title -->
+        <RegExp conditional="latinonlyoriginal" input="$$12" output="\1" dest="12">
+            <RegExp output="$$12" dest="19">
                 <expression />
             </RegExp>
-            <RegExp input="$$6" output="\1" dest="14">
-                <expression trim="1">class=&quot;flag&quot; title=&quot;Česko&quot;[^&gt;]*&gt;([^&lt;]*)</expression>
+            <RegExp input="$$19" output="\1" dest="12">
+                <expression clear="yes">^([\sA-Za-zÀ-ȕ0-9()-_’&#39;“„&lt;&gt;{}&quot;/|;:.,~!?@#$%^=&amp;*\]\\\(\)\[¿§«»ω¤°€¥£¢¡®©_+║´]+)</expression>
             </RegExp>
-            <!-- SK title $$15 with local fallback -->
-            <RegExp output="$$11" dest="15">
+            <expression clear="yes">^($$19)$</expression>
+        </RegExp>
+        <!-- EN title $$13 without fallback (can be empty)-->
+        <!-- EN -->
+        <RegExp input="$$6" output="\1" dest="13">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;angličtina&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- New Zealand -->
+        <RegExp input="$$6" output="\1" dest="13">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Nový Zéland&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- Ireland -->
+        <RegExp input="$$6" output="\1" dest="13">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Irsko&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- Australia -->
+        <RegExp input="$$6" output="\1" dest="13">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Austrálie&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- Canada -->
+        <RegExp input="$$6" output="\1" dest="13">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Kanada&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- GB -->
+        <RegExp input="$$6" output="\1" dest="13">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;Velká Británie&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- USA -->
+        <RegExp input="$$6" output="\1" dest="13">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; title=&quot;USA&quot;[^&gt;]*&gt;([^&lt;]*)&lt;</expression>
+        </RegExp>
+        <!-- Remove working title -->
+        <RegExp input="$$6" output="\1" dest="14">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; [^&gt;]*&gt;([^&lt;]*)[^&gt;]*&gt;\(pracovn</expression>
+        </RegExp>
+        <!-- Remove festival title -->
+        <RegExp input="$$6" output="\1" dest="14">
+            <expression noclean="1" trim="1">class=&quot;flag&quot; [^&gt;]*&gt;([^&lt;]*)[^&gt;]*&gt;\(festivalový</expression>
+        </RegExp>
+        <RegExp input="$$12" output="" dest="12">
+            <expression noclean="1">^$$14$</expression>
+        </RegExp>
+        <RegExp input="$$13" output="" dest="13">
+            <expression noclean="1">^$$14$</expression>
+        </RegExp>
+        <!-- CZ title $$14 with local fallback -->
+        <RegExp output="$$11" dest="14">
+            <expression />
+        </RegExp>
+        <RegExp input="$$6" output="\1" dest="14">
+            <expression trim="1">class=&quot;flag&quot; title=&quot;Česko&quot;[^&gt;]*&gt;([^&lt;]*)</expression>
+        </RegExp>
+        <!-- SK title $$15 with local fallback -->
+        <RegExp output="$$11" dest="15">
+            <expression />
+        </RegExp>
+        <RegExp input="$$6" output="\1" dest="15">
+            <expression trim="1">class=&quot;flag&quot; title=&quot;Slovensko&quot;[^&gt;]*&gt;([^&lt;]*)</expression>
+        </RegExp>
+        <!-- use ENG secondary title in case non-latin original title was removed -->
+        <RegExp conditional="latinonlyoriginal" input="$$12" output="$$13" dest="12">
+            <expression noclean="1">^.{0}$</expression>
+        </RegExp>
+        <!-- clear secondary title in $$12 in case of Czech movie -->
+        <RegExp input="$$1" output="" dest="12">
+            <expression noclean="1">&lt;div class=&quot;origin&quot;&gt;Česko</expression>
+        </RegExp>
+        
+      <!-- construct title -->
+      <RegExp output="" dest="6"><expression clear="yes"></expression></RegExp>
+        <!-- primary selection -->
+        <RegExp output="$$11" dest="16">
+            <expression />
+        </RegExp>
+        <RegExp input="$INFO[titleprimaryl]" output="$$12" dest="16">
+            <expression noclean="1" >^original$</expression>
+        </RegExp>
+        <RegExp input="$INFO[titleprimaryl]" output="$$6" dest="16">
+            <!-- local fallback for EN -->
+            <RegExp output="$$11" dest="6">
                 <expression />
             </RegExp>
-            <RegExp input="$$6" output="\1" dest="15">
-                <expression trim="1">class=&quot;flag&quot; title=&quot;Slovensko&quot;[^&gt;]*&gt;([^&lt;]*)</expression>
+            <RegExp input="$$13" output="$$13" dest="6">
+                <expression noclean="1">(.+)</expression>
             </RegExp>
-            <!-- use ENG secondary title in case non-latin original title was removed -->
-            <RegExp conditional="latinonlyoriginal" input="$$12" output="$$13" dest="12">
-                <expression noclean="1">^.{0}$</expression>
-            </RegExp>
-            <!-- clear secondary title in $$12 in case of Czech movie -->
-            <RegExp input="$$1" output="" dest="12">
-                <expression noclean="1">&lt;div class=&quot;origin&quot;&gt;Česko</expression>
-            </RegExp>
-            
-          <!-- construct title -->
-          <RegExp output="" dest="6"><expression clear="yes"></expression></RegExp>
-            <!-- primary selection -->
-            <RegExp output="$$11" dest="16">
-                <expression />
-            </RegExp>
-            <RegExp input="$INFO[titleprimaryl]" output="$$12" dest="16">
-                <expression noclean="1" >^original$</expression>
-            </RegExp>
-            <RegExp input="$INFO[titleprimaryl]" output="$$6" dest="16">
-                <!-- local fallback for EN -->
-                <RegExp output="$$11" dest="6">
-                    <expression />
-                </RegExp>
-                <RegExp input="$$13" output="$$13" dest="6">
-                    <expression noclean="1">(.+)</expression>
-                </RegExp>
-                <expression noclean="1" >^en$</expression>
-            </RegExp>
-            <RegExp input="$INFO[titleprimaryl]" output="$$14" dest="16">
-                <expression noclean="1" >^cs$</expression>
-            </RegExp>
-            <RegExp input="$INFO[titleprimaryl]" output="$$15" dest="16">
-                <expression noclean="1" >^sk$</expression>
-            </RegExp>
+            <expression noclean="1" >^en$</expression>
+        </RegExp>
+        <RegExp input="$INFO[titleprimaryl]" output="$$14" dest="16">
+            <expression noclean="1" >^cs$</expression>
+        </RegExp>
+        <RegExp input="$INFO[titleprimaryl]" output="$$15" dest="16">
+            <expression noclean="1" >^sk$</expression>
+        </RegExp>
 
-            <!-- secondary selection -->
-            <RegExp output="$$12" dest="17">
+        <!-- secondary selection -->
+        <RegExp output="$$12" dest="17">
+            <expression />
+        </RegExp>
+        <RegExp input="$INFO[titlesecondaryl]" output="$$6" dest="17">
+            <!-- original fallback for EN -->
+            <RegExp output="$$12" dest="6">
                 <expression />
             </RegExp>
-            <RegExp input="$INFO[titlesecondaryl]" output="$$6" dest="17">
-                <!-- original fallback for EN -->
-                <RegExp output="$$12" dest="6">
-                    <expression />
-                </RegExp>
-                <RegExp input="$$13" output="$$13" dest="6">
-                    <expression noclean="1">(.+)</expression>
-                </RegExp>
-                <expression noclean="1" >^en$</expression>
+            <RegExp input="$$13" output="$$13" dest="6">
+                <expression noclean="1">(.+)</expression>
             </RegExp>
+            <expression noclean="1" >^en$</expression>
+        </RegExp>
 
-          <!-- title combination selection -->
-            <!-- fallback for missing  secondary -->
-            <RegExp output="$$16" dest="20">
-                <expression />
-            </RegExp>
-            <!-- primary with secondary -->
-            <RegExp input="$$17" output="$$16 ($$17)" dest="20">
-                <expression>(.+)</expression>
-            </RegExp>
-            <!-- swapped primary with secondary override -->
-            <RegExp conditional="titleswap" input="$$17" output="$$17 ($$16)" dest="20">
-                <expression>(.+)</expression>
-            </RegExp>
-            <!-- remove secondary if same as primary override -->
-            <RegExp conditional="titlesame" input="$$16" output="$$16" dest="20">
-                <expression noclean="1">^$$17$</expression>
-            </RegExp>
-            <!-- primary only override -->
-            <RegExp conditional="!titlesecondary" output="$$16" dest="20">
-                <expression />
-            </RegExp>
-            <!-- output title -->
-            <RegExp conditional="latinonlyoriginal" output="$$19" dest="12">
-                <expression />
-            </RegExp>
-            <RegExp output="&lt;title&gt;$$20&lt;/title&gt;&lt;originaltitle&gt;$$12&lt;/originaltitle&gt;" dest="7+">
-                <expression/>
-            </RegExp>
-            
-           
-            <!-- plot & reviews -->
-            <RegExp input="$$1" output="\1[CR][CR]" dest="6">
-                  <expression trim="1" clear="yes">class=&quot;(?:plot-full|plot-full hidden)&quot;&gt;[^&lt;]*&lt;p&gt;\s(.*?)\s*?&lt;em class=&quot;span-more-small&quot;</expression>
-            </RegExp>
-            <RegExp conditional="csfdreviews" input="$$6" output="&lt;outline&gt;\1&lt;/outline&gt;" dest="7+">
-                <expression/>
-            </RegExp>
-            <RegExp conditional="csfdreviews" input="$$6" output="[B]RECENZE[/B] z ČSFD:[CR][CR]" dest="6+">
-                <expression trim="1">(.*)</expression>
-            </RegExp>
-            <RegExp output="" dest="5"><expression clear="yes"></expression></RegExp>
-            <RegExp conditional="csfdreviews" input="$$1" output="@[B]\1[/B][CR][I]\2[/I][CR][CR]" dest="5+">
-                <expression trim="1" repeat="yes">class=&quot;user-title-name&quot;&gt;(.*?)&lt;\/a&gt;[\s\S]*?review-content&gt;([\s\S]*?)&lt;span class=&quot;review-date</expression>
-            </RegExp>
-            <RegExp conditional="reviewfix" input="$$5" output="\1" dest="6+">
-                <expression repeat="yes">([\sA-Za-zÀ-ȕ0-9(),-_’&#39;“„&lt;&gt;{}&quot;/|;:.~!?@#$%^=&amp;*\]\\\(\)\[¿§«»ω¤°€¥£¢¡®©_+║´]+)</expression>
-            </RegExp>
-            <RegExp conditional="reviewfix" input="$$6" output="&lt;plot&gt;\1&lt;/plot&gt;" dest="7+">
-                <expression noclean="1" />
-            </RegExp>
-            <RegExp conditional="!reviewfix" output="&lt;plot&gt;$$6$$5&lt;/plot&gt;" dest="7+">
-                <expression noclean="1" />
-            </RegExp>
-            <!-- runtime -->
-            <RegExp input="$$1" output="&lt;runtime&gt;\1&lt;/runtime&gt;" dest="7+">
-                <expression repeat="no" trim="1" noclean="1">&lt;div class=&quot;origin&quot;&gt;[\s\S]*?(\d+).min</expression>
-            </RegExp>
-            <!-- rating -->
-            <RegExp input="$$1" output="&lt;rating max=&quot;100&quot;&gt;\1&lt;/rating&gt;" dest="7+">
-                <expression repeat="no" trim="1" noclean="1">rating-average[\s\S]*?(\d+)%</expression>
-            </RegExp>
-            <!-- votes -->
-            <RegExp input="$$1" output="&lt;votes&gt;\1&lt;/votes&gt;" dest="7+">
-                <expression repeat="no" trim="1" noclean="1">class=&quot;counter&quot;&gt;\((.*?)\)&lt;</expression>
-            </RegExp>s
-            <!-- year -->
-            <RegExp input="$$1" output="&lt;year&gt;\1&lt;/year&gt;" dest="7+">
-                <expression repeat="no" trim="1" noclean="1">&lt;div class=&quot;origin&quot;&gt;[\s\S]*?&lt;span&gt;(\d+)</expression>
-            </RegExp>
-            <!-- director -->
-            <RegExp input="$$1" output="\1" dest="4">  
-                 <expression repeat="no" noclean="1">&lt;h4&gt;Režie:([^:]*?)&lt;\/div&gt;</expression>
-            </RegExp>
-            <RegExp input="$$4" output="&lt;director&gt;\1&lt;/director&gt;" dest="7+">
-                <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)</expression>
-            </RegExp>
-            <!-- credits -->
-            <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
-            <RegExp input="$$1" output="\1" dest="4">  
-                 <expression repeat="no" noclean="1">&lt;h4&gt;Scénář:([^:]*?)&lt;\/div&gt;</expression>
-            </RegExp>
-            <RegExp input="$$4" output="&lt;credits&gt;\1&lt;/credits&gt;" dest="7+">
-                <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)</expression>
-            </RegExp>
-            <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
-            <RegExp input="$$1" output="\1" dest="4">  
-                 <expression repeat="no" noclean="1">&lt;h4&gt;Kamera:([^:]*?)&lt;\/div&gt;</expression>
-            </RegExp>
-            <RegExp input="$$4" output="&lt;credits&gt;\1&lt;/credits&gt;" dest="7+">
-                <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)</expression>
-            </RegExp>
-            <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
-            <RegExp input="$$1" output="\1" dest="4"> 
-                 <expression repeat="no" noclean="1">&lt;h4&gt;Hudba:([^:]*?)&lt;\/div&gt;</expression>
-            </RegExp>
-            <RegExp input="$$4" output="&lt;credits&gt;\1&lt;/credits&gt;" dest="7+">
-                <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)</expression>
-            </RegExp>
-            <!-- genres -->
-             <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
-            <RegExp input="$$1" output="\1/" dest="4"> 
-                 <expression repeat="no">&lt;div class=&quot;genres&quot;&gt;(.*?)&lt;/div</expression>
-            </RegExp>
-            <RegExp input="$$4" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7+">
-                <expression repeat="yes" noclean="1" trim="1">([^\/]*?)/</expression>
-            </RegExp>
-            <!-- country -->
-             <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
-            <RegExp input="$$1" output="\1/" dest="4"> 
-                 <expression repeat="no">&lt;div class=&quot;origin&quot;&gt;([^,]*)</expression>
-            </RegExp>
-            <RegExp input="$$4" output="&lt;country&gt;\1&lt;/country&gt;" dest="7+">
-                <expression repeat="yes" noclean="1" trim="1">([^\/]*?)/</expression>
-            </RegExp>			
-            <!-- csfd thumb-->
-            <RegExp conditional="csfdposter" input="$$1" output="\1" dest="6">
-                <expression repeat="no" noclean="1" clear="yes">class=&quot;film-posters([\s\S]*?)&lt;\/div</expression>
-            </RegExp>
-            <RegExp conditional="csfdposter" input="$$6" output="&lt;thumb&gt;https://\1&lt;/thumb&gt;" dest="7+">
-                <expression repeat="no" noclean="1">srcset=&quot;.*(image.pmgstatic.com\/.*?\..*?g)</expression>
-            </RegExp>
-            <!-- fallback lo-res poster -->
-            <RegExp conditional="csfdposter" input="$$6" output="&lt;thumb&gt;https://\1&lt;/thumb&gt;" dest="7+">
-                <expression repeat="no" noclean="1">(image.pmgstatic.com\/.*?\..*?g)</expression>
-            </RegExp>
-            <!-- actors -->     
-            <RegExp input="$$1" output="&lt;url function=&quot;GetCSFDActors&quot; gzip=&quot;yes&quot; cache=&quot;CSFD.hraji-\1.html&quot;&gt;https://www.csfd.cz/film/\1/hraji/|$$10&lt;/url&gt;" dest="5">
-                <expression repeat="no" noclean="1" trim="1">href=&quot;https://www.csfd.cz/film/(.*?)/</expression> 
-            </RegExp>
-            <RegExp conditional="csfdart" input="$$1" output="&lt;url function=&quot;GetCSFDFanarts&quot; gzip=&quot;yes&quot; cache=&quot;CSFD.galerie-\1.html&quot;&gt;https://www.csfd.cz/film/\1/galerie/|$$10&lt;/url&gt;" dest="5+">
-                <expression repeat="no" noclean="1" trim="1">href=&quot;https://www.csfd.cz/film/(.*?)/</expression> 
-            </RegExp>
+      <!-- title combination selection -->
+        <!-- fallback for missing  secondary -->
+        <RegExp output="$$16" dest="20">
+            <expression />
+        </RegExp>
+        <!-- primary with secondary -->
+        <RegExp input="$$17" output="$$16 ($$17)" dest="20">
+            <expression>(.+)</expression>
+        </RegExp>
+        <!-- swapped primary with secondary override -->
+        <RegExp conditional="titleswap" input="$$17" output="$$17 ($$16)" dest="20">
+            <expression>(.+)</expression>
+        </RegExp>
+        <!-- remove secondary if same as primary override -->
+        <RegExp conditional="titlesame" input="$$16" output="$$16" dest="20">
+            <expression noclean="1">^$$17$</expression>
+        </RegExp>
+        <!-- primary only override -->
+        <RegExp conditional="!titlesecondary" output="$$16" dest="20">
+            <expression />
+        </RegExp>
+        <!-- output title -->
+        <RegExp conditional="latinonlyoriginal" output="$$19" dest="12">
+            <expression />
+        </RegExp>
+        <RegExp output="&lt;title&gt;$$20&lt;/title&gt;&lt;originaltitle&gt;$$12&lt;/originaltitle&gt;" dest="7+">
+            <expression/>
+        </RegExp>
+        
+       
+        <!-- plot & reviews -->
+        <RegExp input="$$1" output="\1[CR][CR]" dest="6">
+              <expression trim="1" clear="yes">class=&quot;(?:plot-full|plot-full hidden)&quot;&gt;[^&lt;]*&lt;p&gt;\s(.*?)\s*?&lt;em class=&quot;span-more-small&quot;</expression>
+        </RegExp>
+        <RegExp conditional="csfdreviews" input="$$6" output="&lt;outline&gt;\1&lt;/outline&gt;" dest="7+">
+            <expression/>
+        </RegExp>
+        <RegExp conditional="csfdreviews" input="$$6" output="[B]RECENZE[/B] z ČSFD:[CR][CR]" dest="6+">
+            <expression trim="1">(.*)</expression>
+        </RegExp>
+        <RegExp output="" dest="5"><expression clear="yes"></expression></RegExp>
+        <RegExp conditional="csfdreviews" input="$$1" output="@[B]\1[/B][CR][I]\2[/I][CR][CR]" dest="5+">
+            <expression trim="1" repeat="yes">class=&quot;user-title-name&quot;&gt;(.*?)&lt;\/a&gt;[\s\S]*?review-content&gt;([\s\S]*?)&lt;span class=&quot;review-date</expression>
+        </RegExp>
+        <RegExp conditional="reviewfix" input="$$5" output="\1" dest="6+">
+            <expression repeat="yes">([\sA-Za-zÀ-ȕ0-9(),-_’&#39;“„&lt;&gt;{}&quot;/|;:.~!?@#$%^=&amp;*\]\\\(\)\[¿§«»ω¤°€¥£¢¡®©_+║´]+)</expression>
+        </RegExp>
+        <RegExp conditional="reviewfix" input="$$6" output="&lt;plot&gt;\1&lt;/plot&gt;" dest="7+">
             <expression noclean="1" />
+        </RegExp>
+        <RegExp conditional="!reviewfix" output="&lt;plot&gt;$$6$$5&lt;/plot&gt;" dest="7+">
+            <expression noclean="1" />
+        </RegExp>
+        <!-- runtime -->
+        <RegExp input="$$1" output="&lt;runtime&gt;\1&lt;/runtime&gt;" dest="7+">
+            <expression repeat="no" trim="1" noclean="1">&lt;div class=&quot;origin&quot;&gt;[\s\S]*?(\d+).min</expression>
+        </RegExp>
+        <!-- rating -->
+        <RegExp input="$$1" output="&lt;rating max=&quot;100&quot;&gt;\1&lt;/rating&gt;" dest="7+">
+            <expression repeat="no" trim="1" noclean="1">rating-average[\s\S]*?(\d+)%</expression>
+        </RegExp>
+        <!-- votes -->
+        <RegExp input="$$1" output="&lt;votes&gt;\1&lt;/votes&gt;" dest="7+">
+            <expression repeat="no" trim="1" noclean="1">class=&quot;counter&quot;&gt;\((.*?)\)&lt;</expression>
+        </RegExp>
+        <!-- year -->
+        <RegExp input="$$1" output="&lt;year&gt;\1&lt;/year&gt;" dest="7+">
+            <expression repeat="no" trim="1" noclean="1">&lt;div class=&quot;origin&quot;&gt;[\s\S]*?&lt;span&gt;(\d+)</expression>
+        </RegExp>
+        <!-- director -->
+        <RegExp input="$$1" output="\1" dest="4">  
+             <expression repeat="no" noclean="1">&lt;h4&gt;Režie:([^:]*?)&lt;\/div&gt;</expression>
+        </RegExp>
+        <RegExp input="$$4" output="&lt;director&gt;\1&lt;/director&gt;" dest="7+">
+            <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)</expression>
+        </RegExp>
+        <!-- credits -->
+        <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
+        <RegExp input="$$1" output="\1" dest="4">  
+             <expression repeat="no" noclean="1">&lt;h4&gt;Scénář:([^:]*?)&lt;\/div&gt;</expression>
+        </RegExp>
+        <RegExp input="$$4" output="&lt;credits&gt;\1&lt;/credits&gt;" dest="7+">
+            <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)</expression>
+        </RegExp>
+        <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
+        <RegExp input="$$1" output="\1" dest="4">  
+             <expression repeat="no" noclean="1">&lt;h4&gt;Kamera:([^:]*?)&lt;\/div&gt;</expression>
+        </RegExp>
+        <RegExp input="$$4" output="&lt;credits&gt;\1&lt;/credits&gt;" dest="7+">
+            <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)</expression>
+        </RegExp>
+        <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
+        <RegExp input="$$1" output="\1" dest="4"> 
+             <expression repeat="no" noclean="1">&lt;h4&gt;Hudba:([^:]*?)&lt;\/div&gt;</expression>
+        </RegExp>
+        <RegExp input="$$4" output="&lt;credits&gt;\1&lt;/credits&gt;" dest="7+">
+            <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)</expression>
+        </RegExp>
+        <!-- genres -->
+         <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
+        <RegExp input="$$1" output="\1/" dest="4"> 
+             <expression repeat="no">&lt;div class=&quot;genres&quot;&gt;(.*?)&lt;/div</expression>
+        </RegExp>
+        <RegExp input="$$4" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7+">
+            <expression repeat="yes" noclean="1" trim="1">([^\/]*?)/</expression>
+        </RegExp>
+        <!-- country -->
+         <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
+        <RegExp input="$$1" output="\1/" dest="4"> 
+             <expression repeat="no">&lt;div class=&quot;origin&quot;&gt;([^,]*)</expression>
+        </RegExp>
+        <RegExp input="$$4" output="&lt;country&gt;\1&lt;/country&gt;" dest="7+">
+            <expression repeat="yes" noclean="1" trim="1">([^\/]*?)/</expression>
+        </RegExp>			
+        <!-- csfd thumb-->
+        <RegExp conditional="csfdposter" input="$$1" output="\1" dest="6">
+            <expression repeat="no" noclean="1" clear="yes">class=&quot;film-posters([\s\S]*?)&lt;\/div</expression>
+        </RegExp>
+        <RegExp conditional="csfdposter" input="$$6" output="&lt;thumb&gt;https://\1&lt;/thumb&gt;" dest="7+">
+            <expression repeat="no" noclean="1">srcset=&quot;.*(image.pmgstatic.com\/.*?\..*?g)</expression>
+        </RegExp>
+        <!-- fallback lo-res poster -->
+        <RegExp conditional="csfdposter" input="$$6" output="&lt;thumb&gt;https://\1&lt;/thumb&gt;" dest="7+">
+            <expression repeat="no" noclean="1">(image.pmgstatic.com\/.*?\..*?g)</expression>
+        </RegExp>
+
+        <RegExp conditional="tmdbextradata" input="$$1" output="&lt;url function=&quot;ParseHelperData&quot;&gt;http://127.0.0.1:32541/?csfd_id=\1&lt;/url&gt;" dest="5+">
+            <expression repeat="no" noclean="1" trim="1">href=&quot;https://www.csfd.cz/film/(.*?)/</expression> 
+        </RegExp>
+        <RegExp conditional="!tmdbextradata" input="$$1" output="&lt;url function=&quot;GetCSFDActors&quot; gzip=&quot;yes&quot; cache=&quot;CSFD.hraji-\1.html&quot;&gt;https://www.csfd.cz/film/\1/hraji/|$$10&lt;/url&gt;" dest="5+">
+            <expression repeat="no" noclean="1" trim="1">href=&quot;https://www.csfd.cz/film/(.*?)/</expression> 
+        </RegExp>     
+        <RegExp conditional="csfdart" input="$$1" output="&lt;url function=&quot;GetCSFDFanarts&quot; gzip=&quot;yes&quot; cache=&quot;CSFD.galerie-\1.html&quot;&gt;https://www.csfd.cz/film/\1/galerie/|$$10&lt;/url&gt;" dest="5+">
+            <expression repeat="no" noclean="1" trim="1">href=&quot;https://www.csfd.cz/film/(.*?)/</expression> 
+        </RegExp>
+
+        <RegExp input="$$7$$5" output="&lt;details&gt;\1&lt;/details&gt;" dest="8">
+            <expression noclean="1">([\s\S]*)</expression>
         </RegExp>
     </GetDetails>
 
+    <ParseHelperData clearbuffers="no" dest="8">
+        <RegExp input="$$1" output="\1" dest="7">
+            <expression noclean="1">([\s\S]*)</expression>
+        </RegExp>
+        <RegExp input="$$7" output="&lt;details&gt;\1&lt;/details&gt;" dest="8">
+            <expression noclean="1">([\s\S]*)</expression>
+        </RegExp>
+    </ParseHelperData>
+    
     <GetCSFDActors clearbuffers="no" dest="8">
         <RegExp input="$$7" output="&lt;details&gt;\1&lt;/details&gt;" dest="8">
                 <RegExp input="$$1" output="\1" dest="6">
                     <expression repeat="no" noclean="1">&lt;div class=&quot;box-content&quot;&gt;\s*?&lt;article([\s\S]*?)&lt;aside</expression> 
                 </RegExp>
-                <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;thumb&gt;https://\1&lt;/thumb&gt;&lt;/actor&gt;" dest="7+">    
+                <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;thumb&gt;https://\1&lt;/thumb&gt;&lt;/actor&gt;" dest="7">    
                     <expression repeat="yes" noclean="1">(image.pmgstatic.com/cache/resized/.*?)&quot;[\s\S]*?class=&quot;film-title-name&quot;[^&gt;]*?&gt;(.*?)&lt;/a</expression>
                 </RegExp>    
             <expression noclean="1" />
         </RegExp>
     </GetCSFDActors>
-    
+
     <GetCSFDFanarts clearbuffers="no" dest="8">
         <RegExp conditional="csfdart" input="$$7" output="&lt;details&gt;\1&lt;/details&gt;" dest="8">
                 <RegExp conditional="csfdart" output="" dest="9"><expression clear="yes"></expression></RegExp>
@@ -394,4 +409,6 @@
             <expression noclean="1" />
         </RegExp>
     </GetCSFDFanarts>
+    
 </scraper>
+

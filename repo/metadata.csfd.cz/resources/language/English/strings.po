@@ -84,6 +84,10 @@ msgctxt "#30230"
 msgid "Remove non-standard chars from reviews"
 msgstr ""
 
+msgctxt "#30240"
+msgid "Get extra data and media from TMDB"
+msgstr ""
+
 msgctxt "#30300"
 msgid "Advanced Search"
 msgstr ""

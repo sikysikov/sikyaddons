@@ -1,3 +1,6 @@
+[B]3.40[/B]
+[changed] Big changes - adding ability to download extras from TMDB
+
 [B]3.36[/B]
 [changed] Use regular image links without user-agent addition
 

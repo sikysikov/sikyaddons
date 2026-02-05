@@ -96,6 +96,10 @@ msgctxt "#30230"
 msgid "Remove non-standard chars from reviews"
 msgstr "Odstranit nestandardní znaky z recenzí"
 
+msgctxt "#30240"
+msgid "Get extra data and media from TMDB"
+msgstr "Stahovat media a doplňující data z TMDB"
+
 msgctxt "#30300"
 msgid "Advanced Search"
 msgstr "Rozšířené vyhledávání"
