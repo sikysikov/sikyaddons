@@ -1,3 +1,6 @@
+[B]3.42[/B]
+[fix] Improvement of TMDB search and acquire more details 
+
 [B]3.41[/B]
 [fix] Quick fix of data parsing
 
