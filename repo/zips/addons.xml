@@ -139,7 +139,7 @@ v 3.5 (23.11.2017)
          <screenshot />
       </assets>
    </extension>
-</addon><addon id="metadata.csfdcz.helper" name="TMDB Helper for CSFD" version="0.0.1" provider-name="sikita">
+</addon><addon id="metadata.csfdcz.helper" name="TMDB Helper for CSFD" version="0.0.2" provider-name="sikita">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
     </requires>
