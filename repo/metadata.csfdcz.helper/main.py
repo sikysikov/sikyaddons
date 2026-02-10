@@ -3,7 +3,7 @@ import xbmc
 import re
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import urlparse, parse_qs, quote, unquote
+from urllib.parse import urlparse, parse_qs, quote, unquote_plus
 from urllib.request import Request, urlopen
 
 PORT = 32541
@@ -17,28 +17,26 @@ class TMDBRequestHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args): return
 
     def do_GET(self):
-        parsed_path = urlparse(self.path)
-        query = parse_qs(parsed_path.query)
-        
-        csfd_id = query.get("csfd_id", [None])[0]
-        year = query.get("year", [""])[0]
-        orig_title = query.get("orig", [""])[0]
-
-        if not csfd_id:
-            self.send_error(400, "Missing csfd_id")
-            return
-
-        if orig_title:
-            orig_title = unquote(orig_title)
-
-        log('Zpracovávám: {} | {} ({})'.format(csfd_id, orig_title, year))
-        
         try:
+            parsed_path = urlparse(self.path)
+            query = parse_qs(parsed_path.query)
+            
+            csfd_id = query.get("csfd_id", [None])[0]
+            year = query.get("year", [""])[0]
+            
+            orig_title = query.get("orig", [""])[0]
+            if orig_title:
+                orig_title = unquote_plus(orig_title)
+
+            log('Zpracovávám: {} | {} ({})'.format(csfd_id, orig_title, year))
+            
             xml_data = self.process_request(csfd_id, orig_title, year)
+            
             self.send_response(200)
             self.send_header('Content-type', 'text/xml; charset=utf-8')
             self.end_headers()
             self.wfile.write(xml_data.encode('utf-8'))
+            
         except Exception as e:
             log('Kritická chyba v RequestHandleru: {}'.format(e))
             self.send_response(500)
@@ -73,11 +71,52 @@ class TMDBRequestHandler(BaseHTTPRequestHandler):
         if not tmdb_id:
             return "<details></details>"
 
-        url = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=cs-CZ&append_to_response=videos,images,credits&include_image_language=cs,en,null'.format(tmdb_id, TMDB_KEY)
+        url = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=cs-CZ&append_to_response=videos,images,credits,release_dates,keywords&include_image_language=cs,en,null'.format(tmdb_id, TMDB_KEY)
         data = json.loads(urlopen(Request(url, headers=HEADERS), timeout=5).read())
 
         xml_parts = []
         
+        # --- UNIQUE IDs ---
+        tmdb_id_val = data.get('id')
+        imdb_id_val = data.get('imdb_id')
+        if tmdb_id_val:
+            xml_parts.append('<uniqueid type="tmdb" default="true">{}</uniqueid>'.format(tmdb_id_val))
+        if imdb_id_val:
+            xml_parts.append('<uniqueid type="imdb">{}</uniqueid>'.format(imdb_id_val))
+
+        # --- TAGLINE ---
+        tagline = data.get('tagline', '')
+        if tagline:
+            xml_parts.append('<tagline>{}</tagline>'.format(tagline.replace('&', '&amp;')))
+
+        # --- PREMIERED ---
+        if data.get('release_date'):
+            xml_parts.append('<premiered>{}</premiered>'.format(data['release_date']))
+
+        # --- KOLEKCE / SET ---
+        if data.get('belongs_to_collection'):
+            set_name = data['belongs_to_collection'].get('name', '')
+            xml_parts.append('<set>{}</set>'.format(set_name.replace('&', '&amp;')))
+
+        # --- MPAA / CERTIFIKACE ---
+        mpaa_val = ""
+        releases = data.get('release_dates', {}).get('results', [])
+        for country_code in ['CZ', 'US']:
+            for r in releases:
+                if r.get('iso_3166_1') == country_code:
+                    dates = r.get('release_dates', [])
+                    if dates:
+                        mpaa_val = dates[0].get('certification', '')
+                if mpaa_val: break
+            if mpaa_val: break
+        if mpaa_val:
+            xml_parts.append('<mpaa>{}</mpaa>'.format(mpaa_val))
+
+        # --- TAGY / KEYWORDS ---
+        keywords = data.get('keywords', {}).get('keywords', [])
+        for k in keywords[:10]: # limit na 10 tagů
+            xml_parts.append('<tag>{}</tag>'.format(k.get('name', '').replace('&', '&amp;')))
+
         # --- HODNOCENÍ ---
         vote_avg = data.get('vote_average', 0)
         vote_cnt = data.get('vote_count', 0)
@@ -105,7 +144,7 @@ class TMDBRequestHandler(BaseHTTPRequestHandler):
             for img in sorted(data['images']['posters'], key=lambda x: x.get('vote_average', 0), reverse=True)[:5]:
                 xml_parts.append('<thumb aspect="poster">https://image.tmdb.org/t/p/original{}</thumb>'.format(img['file_path']))
 
-        # --- STUDIA A LOGA ---
+        # --- STUDIA ---
         if data.get('production_companies'):
             for studio in data['production_companies']:
                 s_name = studio.get('name', '').replace('&', '&amp;')

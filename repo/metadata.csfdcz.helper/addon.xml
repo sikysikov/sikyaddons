@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="metadata.csfdcz.helper" name="TMDB Helper for CSFD" version="0.0.2" provider-name="sikita">
+<addon id="metadata.csfdcz.helper" name="TMDB Helper for CSFD" version="0.0.3" provider-name="sikita">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
     </requires>
