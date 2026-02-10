@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2026-02-06" framework="1.1">
+<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2026-02-10" framework="1.1">
 
 	<!-- input : $$1=nfo file -->
 	<!-- output: <url>*</url> -->
@@ -354,8 +354,18 @@
             <expression repeat="no" noclean="1" trim="1">href=&quot;https://www.csfd.cz/film/(.*?)/</expression> 
         </RegExp>
 
-        <RegExp input="$$7" output="\1" dest="12">
+        <RegExp input="$$7" output="\1" dest="14">
             <expression noclean="1">&lt;originaltitle&gt;([^&lt;]*)&lt;/originaltitle&gt;</expression>
+        </RegExp>
+        
+        <RegExp output="" dest="12"><expression clear="yes"></expression></RegExp>
+
+        <RegExp input="$$14" output="\1+" dest="12+">
+            <expression repeat="yes">(.+?)(?: |$)</expression>
+        </RegExp>
+
+        <RegExp input="$$12" output="\1" dest="12">
+            <expression repeat="no">(.+?)\+$</expression>
         </RegExp>
 
         <RegExp input="$$7" output="\1" dest="13">

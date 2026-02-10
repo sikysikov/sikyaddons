@@ -1,3 +1,7 @@
+[B]3.43[/B]
+[fix] TMDB query
+[added] Get more data from TMDB (tagline, keywords, collections, premiered, mpaa ...)
+
 [B]3.42[/B]
 [fix] Improvement of TMDB search and acquire more details 
 
