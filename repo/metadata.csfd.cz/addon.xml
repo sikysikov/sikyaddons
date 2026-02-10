@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.43" provider-name="sikita">
+<addon id="metadata.csfd.cz" name="ČSFD.cz" version="3.44" provider-name="sikita">
    <requires>
       <import addon="xbmc.metadata" version="2.1.0"/>
       <import addon="metadata.csfdcz.helper" version="0.0.1"/>
@@ -17,6 +17,8 @@
       <license>GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007</license>
       <forum></forum>
       <news>
+v 3.44
+   [fix] Non-standard charset TMDB query and fallbacks
 v 3.43
    [fix] TMDB query
    [added] Get more data from TMDB (tagline, keywords, collections, premiered, mpaa ...)
