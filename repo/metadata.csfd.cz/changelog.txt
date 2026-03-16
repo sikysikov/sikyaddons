@@ -1,3 +1,6 @@
+[B]3.45[/B]
+[fix] Updated headers and useragents to avoid bot protection
+
 [B]3.44[/B]
 [fix] Non-standard charset TMDB query and fallbacks
 
