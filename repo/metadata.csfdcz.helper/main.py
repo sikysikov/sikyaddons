@@ -2,6 +2,7 @@
 import xbmc
 import re
 import json
+import gzip
 import http.client
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, quote, unquote_plus
@@ -13,6 +14,14 @@ HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)', 'Accept': 
 
 def log(msg):
     xbmc.log('CSFD_TMDB_SERVICE: {}'.format(msg), level=xbmc.LOGDEBUG)
+
+def fetch_json(url):
+    req = Request(url, headers=HEADERS)
+    with urlopen(req, timeout=5) as response:
+        raw_data = response.read()
+        if response.headers.get('Content-Encoding') == 'gzip':
+            raw_data = gzip.decompress(raw_data)
+        return json.loads(raw_data.decode('utf-8'))
 
 class TMDBRequestHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args): return
@@ -98,10 +107,8 @@ class TMDBRequestHandler(BaseHTTPRequestHandler):
                 url += '&year={}'.format(year)
             
             log('TMDB API Request: {}'.format(url))
-            
-            req = Request(url, headers=HEADERS)
-            with urlopen(req, timeout=5) as response:
-                res = json.loads(response.read().decode('utf-8'))
+
+            res = fetch_json(url)
             
             if res.get('results'):
                 return res['results'][0]['id']
@@ -132,8 +139,7 @@ class TMDBRequestHandler(BaseHTTPRequestHandler):
 
         try:
             url = 'https://api.themoviedb.org/3/movie/{}?api_key={}&language=cs-CZ&append_to_response=videos,images,credits,release_dates,keywords&include_image_language=cs,en,null'.format(tmdb_id, TMDB_KEY)
-            req = Request(url, headers=HEADERS)
-            data = json.loads(urlopen(req, timeout=5).read().decode('utf-8'))
+            data = fetch_json(url)
 
             xml_parts = []
             
@@ -230,7 +236,7 @@ class TMDBRequestHandler(BaseHTTPRequestHandler):
             if not yt_id:
                 try:
                     eng_url = 'https://api.themoviedb.org/3/movie/{}/videos?api_key={}&language=en-US'.format(tmdb_id, TMDB_KEY)
-                    eng_res = json.loads(urlopen(Request(eng_url, headers=HEADERS), timeout=5).read().decode('utf-8'))
+                    eng_res = fetch_json(eng_url)
                     for v in eng_res.get('results', []):
                         if v.get('type') == 'Trailer' and v.get('site') == 'YouTube':
                             yt_id = v.get('key'); break

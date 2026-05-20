@@ -1,3 +1,6 @@
+[B]3.46[/B]
+[fix] Changes at CSFD and TMDB. Update TMDB Helper for CSFD!
+
 [B]3.45[/B]
 [fix] Updated headers and useragents to avoid bot protection
 
