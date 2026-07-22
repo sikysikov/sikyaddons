@@ -1,3 +1,6 @@
+[B]3.47[/B]
+[fix] New bot protection on CSFD.
+
 [B]3.46[/B]
 [fix] Changes at CSFD and TMDB. Update TMDB Helper for CSFD!
 
