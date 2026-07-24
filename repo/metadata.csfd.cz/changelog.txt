@@ -1,3 +1,6 @@
+[B]3.48[/B]
+[fix] Scraping Genres on CSFD.
+
 [B]3.47[/B]
 [fix] New bot protection on CSFD.
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2026-07-22" framework="1.1">
+<?xml version="1.0" encoding="UTF-8"?><scraper name="csfdcz" date="2026-07-24" framework="1.1">
 
 	<!-- input : $$1=nfo file -->
 	<!-- output: <url>*</url> -->
@@ -328,7 +328,7 @@
              <expression repeat="no" noclean="1">&lt;div class=&quot;genres&quot;&gt;(.*?)&lt;/div</expression>
         </RegExp>
         <RegExp input="$$4" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7+">
-            <expression repeat="yes" noclean="1">&lt;a href[^&gt;]*&gt;([^&lt;]*)&lt;/a&gt;</expression>
+            <expression repeat="yes" noclean="1" trim="1">(?:^|&gt;)\s*([^&lt;&gt;\s][^&lt;&gt;]*?)\s*(?:&lt;|$)</expression>
         </RegExp>
         <!-- country -->
          <RegExp output="" dest="4"><expression clear="yes"></expression></RegExp>
